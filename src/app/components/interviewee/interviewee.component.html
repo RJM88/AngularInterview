@@ -1,0 +1,30 @@
+<ul>
+  <h1>DEVELOPERS</h1>
+  <div *ngFor="let developer of developers">
+    <li>Name: {{developer.name}}</li>
+    <p>Description: {{developer.description}}</p>
+    <br />
+  </div>
+  <h1>DEVELOPERS WHO LIKE RED:</h1>
+  <select [(ngModel)]="favoriteColor">
+  <option *ngFor="let selectedColor of colors">
+  {{selectedColor}}
+  </option>
+</select>
+ <br>
+ <br>
+  <div *ngFor="let developer of developers | color: favoriteColor">
+    <li>Name:  {{developer.name}}</li>
+    <p> Color:  {{developer.favoriteColor}}</p>
+    <br>
+  </div>
+  <h1>DEVELOPERS AND THEIR FAVORITE FOODS:</h1>
+  <div *ngFor="let developer of developers | company">
+    <li>Name: {{developer.name}}</li>
+    <p>Company: {{developer.company}}</p>
+    <div *ngFor="let food of foods">
+      <p *ngIf="food.developerId === developer.id">Favorite Food: {{food.name}}</p>
+    </div>
+    <br>
+  </div>
+</ul>
